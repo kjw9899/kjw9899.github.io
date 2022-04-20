@@ -98,21 +98,29 @@ $\odot$ : element-wise product operation
 
 
 generator $G_H$는 HOG feature를 생성하고 훼손 영역을 예측한다.
+
 $$
+\begin{aligned}
 I_{pred}\ =\ G_H(I_m,\ I_{gt})
+
 $$
 그 후, descriminator $D_H$는 HOG feature와 GT image를 비교하여 real or fake를 예측한다.
-
+\end{aligned}
 $L1_{FS}$와 $L_{adv1}$는 다음과 같은 공식을 따른다.
+
 $$
 \begin{aligned}
 L1_{FS}\ &=\ ||I_{pred}\ -\ I_{gt}|| \\
 L_{adv1}\ &=\ E_{(I_{gt}\, I_{pred})}[\log D(I_{GT},\ I_{pred})]\ +\ E_{(I_{pred})}[1\ -\ D(I_{pred},\ I_{gt})]
 \end{aligned}
 $$
+
 그러므로 $L_{FS}$는 다음과 같이 나타낼 수 있다.
+
 $$
+\begin{aligned}
 L_{FS}\ =\ \lambda_1 L1_{FS}\ +\ \lambda_{adv1}L_{adv1}
+\end{aligend}
 $$
 *lambda는 하이퍼파라미터 값이며 1:1의 비율을 가진다.*
 
